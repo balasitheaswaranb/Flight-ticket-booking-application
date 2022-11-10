@@ -5,6 +5,7 @@ import com.flight.model.Flight;
 public class FlightDetails {
 	
     public void display(Flight flight) {
+    	
     	System.out.println(flight.getFlightId());
     	System.out.println(flight.getFlightName());
     	System.out.println(flight.getArivalTime());

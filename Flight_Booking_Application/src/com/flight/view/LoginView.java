@@ -10,7 +10,6 @@ public class LoginView {
 	public void init() {
 		System.out.println("Welcome to flight booking application");
 		new LoginView().checkLogin();
-
 	}
 
 	public void checkLogin() {

@@ -9,7 +9,6 @@ import com.flight.model.Ticket;
 
 public class Database {
 	private static Database database;
-
 	private List<Flight> flightDetails;
 	private List<Passanger> passangerDetails;
 	private List<Ticket> ticketList;
@@ -50,5 +49,6 @@ public class Database {
 	public void setTicketList(Ticket ticketList) {
 		this.ticketList.add(ticketList);
 	}
+
 
 }
