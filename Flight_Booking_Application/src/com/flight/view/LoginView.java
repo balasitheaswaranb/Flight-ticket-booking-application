@@ -2,38 +2,32 @@ package com.flight.view;
 
 import java.util.Scanner;
 
-import com.flight.controller.ValideLogin;
+import com.flight.controller.LoginController;
 
 public class LoginView {
+
 	private Scanner scanner = new Scanner(System.in);
-
-	public void init() {
-		System.out.println("Welcome to flight booking application");
-		new LoginView().checkLogin();
+	private LoginController loginController;
+	
+	LoginView() {
+		loginController = new LoginController(this);
 	}
 
-	public void checkLogin() {
-		System.out.println("\n1.Admin\n2.User\nEnter option!!");
-		String option = scanner.nextLine();
-		switch (option) {
-		case "1":
-			boolean isValied = true;
-			while (isValied) {
-				System.out.println("Enter your name");
-				String name = scanner.nextLine();
-				System.out.println("Enter your password");
-				String password = scanner.nextLine();
-				if (new ValideLogin().checkDetails(name, password)) {
-					isValied = false;
-				}
-			}
-			new MainView().adminMenu();
-			break;
-		case "2":
-			new MainView().userMenu();
-			break;
+	public void initLogin() {
+		checkForLogin();
+	}
+
+	private void checkForLogin() {
+		System.out.println("Enter User Name");
+		String userName = scanner.nextLine();
+		System.out.println("Enter password");
+		String password = scanner.nextLine();
+		if (loginController.checkLoginCredentials(userName, password)) {
+			MenuView menuView = new MenuView();
+			menuView.init();
+		} else {
+			System.out.println("\nInvalid Credentials. Please try again!\n");
+			checkForLogin();
 		}
-
 	}
-
 }
